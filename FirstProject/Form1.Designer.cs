@@ -28,19 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
+            textBox1 = new TextBox();
+            label1 = new Label();
             SuspendLayout();
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(36, 23);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(192, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(36, 67);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(266, 339);
+            Controls.Add(label1);
+            Controls.Add(textBox1);
             Name = "Form1";
             Text = "Calculator";
-            Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox textBox1;
+        private Label label1;
     }
 }

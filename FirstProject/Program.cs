@@ -1,3 +1,5 @@
+using FirstProject.model;
+
 namespace FirstProject
 {
     internal static class Program
@@ -12,6 +14,9 @@ namespace FirstProject
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
+            ExpressionParser test = new ExpressionParser("(2+3)*5.1");
+            MessageBox.Show(String.Join("", test.test.ToArray()));
         }
     }
 }
