@@ -8,8 +8,6 @@ namespace FirstProject.model
 {
     internal class ExpressionParser
     {
-        private string expression;
-        public List<string> test;
         private Dictionary<char, int> operatorPriority = new()
         {
             {'(', 0},
@@ -20,11 +18,6 @@ namespace FirstProject.model
             {'^', 3},
             {'~', 4}
         };
-        public ExpressionParser(string expression)
-        {
-            this.expression = expression;
-            test = ToPostfixExpr(expression);
-        }
 
         private string GetStringNumber(string expression, ref int pos)
         {
@@ -33,7 +26,7 @@ namespace FirstProject.model
             for (; pos < expression.Length; pos++)
             {
                 char num = expression[pos];
-                if (!(Char.IsDigit(num) || num == '.'))
+                if (!(Char.IsDigit(num) || num == ','))
                 {
                     pos --;
                     break;
@@ -89,6 +82,55 @@ namespace FirstProject.model
                 postfixExpr.Add(op.ToString());
             }
             return postfixExpr;
+        }
+
+        private double Execute(char op, double first, double second)
+        {
+            return op switch
+            {
+                '+' => first + second,
+                '-' => first - second,
+                '*' => first * second,
+                '/' => first / second,
+                '^' => Math.Pow(first, second),
+                _ => 0
+            };
+        }
+
+        private double CalculatePostfix(List<string> postfixExpr)
+        {
+            Stack<double> nums = new();
+            int counter = 0;
+
+            foreach (string c in postfixExpr)
+            {
+                if (c.Length > 1 || Char.IsDigit(Convert.ToChar(c)))
+                {
+                    nums.Push(Convert.ToDouble(c));
+                    continue;
+                }
+                counter++;
+                if (c == "~")
+                {
+                    double last = nums.Count > 0 ? nums.Pop() : 0;
+                    nums.Push(Execute('-', 0, last));
+                    continue;
+                }
+
+                double second = nums.Count > 0 ? nums.Pop() : 0,
+                first = nums.Count > 0 ? nums.Pop() : 0;
+                nums.Push(Execute(Convert.ToChar(c), first, second));
+            }
+
+            return nums.Pop();
+        }
+
+        public string Calculate(string expression)
+        {
+            List<string> postfixExpr = ToPostfixExpr(expression);
+            MessageBox.Show(String.Join("", postfixExpr));
+            double result = CalculatePostfix(postfixExpr);
+            return result.ToString();
         }
     }
 }

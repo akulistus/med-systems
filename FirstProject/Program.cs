@@ -15,8 +15,8 @@ namespace FirstProject
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
 
-            ExpressionParser test = new ExpressionParser("(2+3)*5.1");
-            MessageBox.Show(String.Join("", test.test.ToArray()));
+            ExpressionParser test = new();
+            MessageBox.Show(test.Calculate("15/(7-(1+1))*3-(2+(1+1))*15/(7-(200+1))*3-(2+(1+1))*(15/(7-(1+1))*3-(2+(1+1))+15/(7-(1+1))*3-(2+(1+1)))"));
         }
     }
 }
