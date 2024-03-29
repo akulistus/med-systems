@@ -128,7 +128,6 @@ namespace FirstProject.model
         public string Calculate(string expression)
         {
             List<string> postfixExpr = ToPostfixExpr(expression);
-            MessageBox.Show(String.Join("", postfixExpr));
             double result = CalculatePostfix(postfixExpr);
             return result.ToString();
         }
