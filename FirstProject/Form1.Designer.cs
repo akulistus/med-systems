@@ -47,6 +47,10 @@
             buttonMinus = new Button();
             buttonPlus = new Button();
             label2 = new Label();
+            buttonOpeningParenthesis = new Button();
+            buttonClosingParenthesis = new Button();
+            buttonClear = new Button();
+            buttonDelete = new Button();
             SuspendLayout();
             // 
             // textBox1
@@ -68,7 +72,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 90);
+            button1.Location = new Point(12, 144);
             button1.Name = "button1";
             button1.Size = new Size(48, 48);
             button1.TabIndex = 2;
@@ -78,7 +82,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(66, 90);
+            button2.Location = new Point(66, 144);
             button2.Name = "button2";
             button2.Size = new Size(48, 48);
             button2.TabIndex = 3;
@@ -88,7 +92,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(120, 90);
+            button3.Location = new Point(120, 144);
             button3.Name = "button3";
             button3.Size = new Size(48, 48);
             button3.TabIndex = 4;
@@ -98,7 +102,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(12, 144);
+            button4.Location = new Point(12, 198);
             button4.Name = "button4";
             button4.Size = new Size(48, 48);
             button4.TabIndex = 5;
@@ -108,7 +112,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(66, 144);
+            button5.Location = new Point(66, 198);
             button5.Name = "button5";
             button5.Size = new Size(48, 48);
             button5.TabIndex = 6;
@@ -118,7 +122,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(120, 144);
+            button6.Location = new Point(120, 198);
             button6.Name = "button6";
             button6.Size = new Size(48, 48);
             button6.TabIndex = 7;
@@ -128,7 +132,7 @@
             // 
             // button7
             // 
-            button7.Location = new Point(12, 198);
+            button7.Location = new Point(12, 252);
             button7.Name = "button7";
             button7.Size = new Size(48, 48);
             button7.TabIndex = 8;
@@ -138,7 +142,7 @@
             // 
             // button8
             // 
-            button8.Location = new Point(66, 198);
+            button8.Location = new Point(66, 252);
             button8.Name = "button8";
             button8.Size = new Size(48, 48);
             button8.TabIndex = 9;
@@ -148,7 +152,7 @@
             // 
             // button9
             // 
-            button9.Location = new Point(120, 198);
+            button9.Location = new Point(120, 252);
             button9.Name = "button9";
             button9.Size = new Size(48, 48);
             button9.TabIndex = 10;
@@ -158,7 +162,7 @@
             // 
             // button0
             // 
-            button0.Location = new Point(66, 252);
+            button0.Location = new Point(66, 306);
             button0.Name = "button0";
             button0.Size = new Size(48, 48);
             button0.TabIndex = 11;
@@ -168,7 +172,7 @@
             // 
             // button_
             // 
-            button_.Location = new Point(120, 252);
+            button_.Location = new Point(120, 306);
             button_.Name = "button_";
             button_.Size = new Size(48, 48);
             button_.TabIndex = 12;
@@ -178,7 +182,7 @@
             // 
             // buttonPower
             // 
-            buttonPower.Location = new Point(12, 252);
+            buttonPower.Location = new Point(12, 306);
             buttonPower.Name = "buttonPower";
             buttonPower.Size = new Size(48, 48);
             buttonPower.TabIndex = 13;
@@ -188,7 +192,7 @@
             // 
             // buttonDivide
             // 
-            buttonDivide.Location = new Point(174, 90);
+            buttonDivide.Location = new Point(174, 144);
             buttonDivide.Name = "buttonDivide";
             buttonDivide.Size = new Size(48, 48);
             buttonDivide.TabIndex = 14;
@@ -198,7 +202,7 @@
             // 
             // buttonMultiply
             // 
-            buttonMultiply.Location = new Point(174, 144);
+            buttonMultiply.Location = new Point(174, 198);
             buttonMultiply.Name = "buttonMultiply";
             buttonMultiply.Size = new Size(48, 48);
             buttonMultiply.TabIndex = 15;
@@ -208,7 +212,7 @@
             // 
             // buttonMinus
             // 
-            buttonMinus.Location = new Point(174, 198);
+            buttonMinus.Location = new Point(174, 252);
             buttonMinus.Name = "buttonMinus";
             buttonMinus.Size = new Size(48, 48);
             buttonMinus.TabIndex = 16;
@@ -218,7 +222,7 @@
             // 
             // buttonPlus
             // 
-            buttonPlus.Location = new Point(174, 252);
+            buttonPlus.Location = new Point(174, 306);
             buttonPlus.Name = "buttonPlus";
             buttonPlus.Size = new Size(48, 48);
             buttonPlus.TabIndex = 17;
@@ -235,11 +239,55 @@
             label2.TabIndex = 18;
             label2.Text = "Результат:";
             // 
+            // buttonOpeningParenthesis
+            // 
+            buttonOpeningParenthesis.Location = new Point(12, 90);
+            buttonOpeningParenthesis.Name = "buttonOpeningParenthesis";
+            buttonOpeningParenthesis.Size = new Size(48, 48);
+            buttonOpeningParenthesis.TabIndex = 19;
+            buttonOpeningParenthesis.Text = "(";
+            buttonOpeningParenthesis.UseVisualStyleBackColor = true;
+            buttonOpeningParenthesis.Click += buttonOpeningParenthesis_Click;
+            // 
+            // buttonClosingParenthesis
+            // 
+            buttonClosingParenthesis.Location = new Point(66, 90);
+            buttonClosingParenthesis.Name = "buttonClosingParenthesis";
+            buttonClosingParenthesis.Size = new Size(48, 48);
+            buttonClosingParenthesis.TabIndex = 20;
+            buttonClosingParenthesis.Text = ")";
+            buttonClosingParenthesis.UseVisualStyleBackColor = true;
+            buttonClosingParenthesis.Click += buttonClosingParenthesis_Click;
+            // 
+            // buttonClear
+            // 
+            buttonClear.Location = new Point(120, 90);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(48, 48);
+            buttonClear.TabIndex = 21;
+            buttonClear.Text = "Clr";
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Location = new Point(174, 90);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(48, 48);
+            buttonDelete.TabIndex = 22;
+            buttonDelete.Text = "Del";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(233, 311);
+            ClientSize = new Size(235, 363);
+            Controls.Add(buttonDelete);
+            Controls.Add(buttonClear);
+            Controls.Add(buttonClosingParenthesis);
+            Controls.Add(buttonOpeningParenthesis);
             Controls.Add(label2);
             Controls.Add(buttonPlus);
             Controls.Add(buttonMinus);
@@ -287,5 +335,9 @@
         private Button buttonMinus;
         private Button buttonPlus;
         private Label label2;
+        private Button buttonOpeningParenthesis;
+        private Button buttonClosingParenthesis;
+        private Button buttonClear;
+        private Button buttonDelete;
     }
 }

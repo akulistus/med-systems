@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FirstProject.model
 {
@@ -60,7 +56,10 @@ namespace FirstProject.model
                     {
                         postfixExpr.Add(operatorsStack.Pop().ToString());
                     }
-                    operatorsStack.Pop();
+                    if (operatorsStack.Count > 0)
+                    {
+                        operatorsStack.Pop();
+                    }
                 }
                 else if (operatorPriority.ContainsKey(c))
                 {
@@ -117,12 +116,19 @@ namespace FirstProject.model
                     continue;
                 }
 
-                double second = nums.Count > 0 ? nums.Pop() : 0,
-                first = nums.Count > 0 ? nums.Pop() : 0;
-                nums.Push(Execute(Convert.ToChar(c), first, second));
+                if (nums.Count > 1)
+                {
+                    double second = nums.Pop(),
+                    first = nums.Pop();
+                    nums.Push(Execute(Convert.ToChar(c), first, second));
+                }
             }
 
-            return nums.Pop();
+            if (nums.Count > 0)
+            {
+                return nums.Pop();
+            }
+            return 0;
         }
 
         public string Calculate(string expression)

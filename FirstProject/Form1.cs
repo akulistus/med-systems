@@ -14,14 +14,34 @@ namespace FirstProject
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            if (textBox1.Text.Length == 0)
+            {
+                label1.Text = "";
+                return;
+            }
             label1.Text = viewModel.Calculate(textBox1.Text);
-
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar < 32) || (e.KeyChar >= '0') && (e.KeyChar <= '9') || (charList.Contains(e.KeyChar)))
+            {
+                string text = ((TextBox)sender).Text;
+                if (text.Length > 0 && e.KeyChar == text[text.Length - 1] && charList.Contains(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == ',')
+                {
+                    for (int i = text.Length - 1; i >= 0; i--)
+                    {
+                        if (charList.Contains((char)text[i]) && text[i] != ',') { break; }
+                        if (text[i] == ',') { e.Handled = true;}
+                    }
+                }
                 return;
+            }
 
             // only evident errors (like 'A' or '&') are restricted
             e.Handled = true;
@@ -102,25 +122,49 @@ namespace FirstProject
         private void buttonPlus_Click(object sender, EventArgs e)
         {
             textBox1.Focus();
-            SendKeys.Send("{+}");
+            SendKeys.Send("{ADD}");
         }
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
             textBox1.Focus();
-            SendKeys.Send("-");
+            SendKeys.Send("{SUBTRACT}");
         }
 
         private void buttonMultiply_Click(object sender, EventArgs e)
         {
             textBox1.Focus();
-            SendKeys.Send("*");
+            SendKeys.Send("{MULTIPLY}");
         }
 
         private void buttonDivide_Click(object sender, EventArgs e)
         {
             textBox1.Focus();
-            SendKeys.Send("/");
+            SendKeys.Send("{DIVIDE}");
+        }
+
+        private void buttonOpeningParenthesis_Click(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+            SendKeys.Send("{(}");
+        }
+
+        private void buttonClosingParenthesis_Click(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+            SendKeys.Send("{)}");
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+            SendKeys.Send("{BACKSPACE}");
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+            SendKeys.Send("^A{BACKSPACE}");
         }
     }
 }
